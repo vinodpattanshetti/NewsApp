@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="txt_headlines">HEADLINES</string>
+</resources>

@@ -3,9 +3,9 @@ package com.example.vinod.newsapp.view.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.vinod.newsapp.R
+import com.example.vinod.newsapp.base.utils.returnRequiredDate
+import com.example.vinod.newsapp.base.utils.setImageLoader
 import com.example.vinod.newsapp.databinding.ActivityNewsDetailBinding
 import com.example.vinod.newsapp.model.Article
 import com.example.vinod.newsapp.view.activity.NewsActivity.Companion.ARTICLE_DATA
@@ -29,11 +29,10 @@ class NewsDetailActivity : AppCompatActivity() {
     mBinder?.run {
       tvHeadlineNews.text = article?.title
       tvHeadlineChannel.text = article?.source?.name
-      tvNewsDate.text = article?.publishedAt
+      tvNewsDate.text = returnRequiredDate(article?.publishedAt)
       tvNewsDescription.text = article?.description
       mBinder?.ivNewsImage?.let {
-        Glide.with(it.context).load(article?.urlToImage)
-          .apply(RequestOptions.placeholderOf(R.color.colorPrimary)).into(it)
+        setImageLoader(it, article?.urlToImage.orEmpty())
       }
     }
   }

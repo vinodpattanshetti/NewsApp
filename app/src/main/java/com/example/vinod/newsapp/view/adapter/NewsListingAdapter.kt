@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinod.newsapp.R
 import com.example.vinod.newsapp.base.utils.orDefaultInt
+import com.example.vinod.newsapp.base.utils.returnRequiredDate
+import com.example.vinod.newsapp.base.utils.setImageLoader
 import com.example.vinod.newsapp.databinding.ItemNewsLayoutBinding
 import com.example.vinod.newsapp.model.Article
 import com.example.vinod.newsapp.model.News
@@ -31,10 +33,9 @@ class NewsListingAdapter(
     holder.binder?.run {
       tvHeadlineNews.text = article?.title
       tvHeadlineChannel.text = article?.source?.name
-      tvNewsDate.text = article?.publishedAt
-      Glide.with(ivNewsImage.context).load(article?.urlToImage)
-        .apply(RequestOptions.placeholderOf(R.color.colorPrimary)).into(ivNewsImage)
-      ivNewsImage.setOnClickListener { iActivityCommunicator.onItemSelected(article, position) }
+      tvNewsDate.text = returnRequiredDate(article?.publishedAt)
+      setImageLoader(ivNewsImage, article?.urlToImage.orEmpty())
+      ivNewsImage.setOnClickListener { iActivityCommunicator.onItemSelected(article, holder.adapterPosition) }
     }
   }
 

@@ -1,6 +1,8 @@
-package com.example.vinod.newsapp;
+package com.example.vinod.newsapp.view.activity;
 
 import android.os.Bundle;
+
+import com.example.vinod.newsapp.R;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

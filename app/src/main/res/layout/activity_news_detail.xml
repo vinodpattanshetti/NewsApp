@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_464646"
-        tools:context=".MainActivity">
+        tools:context=".view.activity.NewsActivity">
 
         <ImageView
             android:id="@+id/iv_news_image"

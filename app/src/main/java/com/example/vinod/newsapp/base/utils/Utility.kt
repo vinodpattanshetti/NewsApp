@@ -15,3 +15,5 @@ fun View.showView() {
 fun View.hideView() {
   this.visibility = View.GONE
 }
+
+fun Int?.orDefaultInt() = this ?: 0

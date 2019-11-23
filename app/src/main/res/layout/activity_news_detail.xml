@@ -14,6 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
+            android:scaleY="1.2"
+            android:scaleX="1.1"
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
@@ -82,7 +84,7 @@
             tools:text="Category: computer security Fascinated by cryptocurrencies? Wishing you’d got in on the ground floor for the Bitcoin boom of 2017? Many people would answer “Yes” to both those questions – and with good reason. After all, the dramatic roller coaster ride that …" />
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/my_toolbar"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"

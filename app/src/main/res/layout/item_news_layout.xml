@@ -5,11 +5,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_f2f2f2">
+        android:background="@color/color_464646">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dimen_220dp"
             android:layout_marginStart="@dimen/dimen_16dp"
             android:layout_marginLeft="@dimen/dimen_16dp"
             android:layout_marginTop="@dimen/dimen_12dp"
@@ -21,22 +21,26 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_220dp"
-                android:background="@color/color_black"
-                android:layout_marginStart="@dimen/dimen_16dp"
-                android:layout_marginLeft="@dimen/dimen_16dp"
-                android:layout_marginTop="@dimen/dimen_12dp"
-                android:layout_marginEnd="@dimen/dimen_16dp"
-                android:layout_marginRight="@dimen/dimen_16dp">
+                android:background="@color/color_black">
 
                 <ImageView
                     android:id="@+id/iv_news_image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_220dp"
+                    android:layout_marginStart="@dimen/dimen_16dp"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_12dp"
+                    android:layout_marginEnd="@dimen/dimen_16dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    android:scaleType="center"
+                    android:scaleX="1.1"
+                    android:scaleY="1.2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

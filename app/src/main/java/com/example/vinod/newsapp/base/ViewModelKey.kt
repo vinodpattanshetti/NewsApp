@@ -1,4 +1,4 @@
-package com.example.vinod.weatherapplication.base
+package com.example.vinod.newsapp.base
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

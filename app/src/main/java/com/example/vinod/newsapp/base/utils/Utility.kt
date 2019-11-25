@@ -5,10 +5,10 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.vinod.newsapp.R
+import android.content.Context
 
 const val NETWORK_TIMEOUT_IN_SECONDS = 60L
 const val NETWORK_CACHE_SIZE = 10 * 1024 * 1024L
-const val CELSIUS_KEY = "C"
 
 fun View.showView() {
   this.visibility = View.VISIBLE
@@ -31,4 +31,8 @@ fun returnRequiredDate(date: String?): String {
 fun setImageLoader(imageView: ImageView, url: String) {
   Glide.with(imageView.context).load(url).apply(RequestOptions.placeholderOf(R.color.colorPrimary))
     .into(imageView)
+}
+
+fun convertDpToPx(context: Context, dp: Float): Float {
+  return dp * context.resources.displayMetrics.density
 }

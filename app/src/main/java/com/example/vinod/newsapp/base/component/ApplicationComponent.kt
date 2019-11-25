@@ -10,6 +10,12 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 
+/*
+* This interface 'ApplicationComponent' responsible for enabling
+* selected modules like AndroidSupportInjectionModule::class,
+* NetworkModule::class, ActivityBuilder::class, BaseViewModelModule::class
+* and used for performing dependency injection
+* */
 @ApplicationScope
 @Component(modules = [AndroidSupportInjectionModule::class, NetworkModule::class, ActivityBuilder::class, BaseViewModelModule::class])
 interface ApplicationComponent {

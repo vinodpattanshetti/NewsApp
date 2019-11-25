@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -48,7 +49,10 @@
                     android:layout_marginLeft="@dimen/dimen_12dp"
                     android:layout_marginEnd="@dimen/dimen_16dp"
                     android:layout_marginRight="@dimen/dimen_16dp"
-                    android:text="Boeing"
+                    tools:text="Boeing"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/dimen_20sp"
                     android:textColor="@color/color_f2f2f2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -56,20 +60,20 @@
 
                 <TextView
                     android:id="@+id/tv_headline_channel"
-                    style="@style/TextViewRobotoSlabRegularStyle"
+                    style="@style/TextViewRobotoSlabBoldStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_12dp"
                     android:layout_marginLeft="@dimen/dimen_12dp"
                     android:layout_marginTop="@dimen/dimen_24dp"
-                    android:layout_marginBottom="@dimen/dimen_8dp"
-                    android:text="Vox.com"
-                    android:textColor="@color/color_f2f2f2"
+                    android:layout_marginBottom="@dimen/dimen_12dp"
+                    android:textColor="@color/color_bababa"
                     android:textSize="@dimen/dimen_12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_headline_news"
-                    app:layout_constraintVertical_bias="0.98" />
+                    app:layout_constraintVertical_bias="0.98"
+                    tools:text="Vox.com" />
 
                 <TextView
                     android:id="@+id/tv_news_date"
@@ -80,9 +84,10 @@
                     android:layout_marginLeft="@dimen/dimen_16dp"
                     android:layout_marginEnd="@dimen/dimen_16dp"
                     android:layout_marginRight="@dimen/dimen_16dp"
-                    android:text="2019-07-03"
-                    android:textColor="@color/color_f2f2f2"
+                    tools:text="2019-07-03"
+                    android:textColor="@color/color_bababa"
                     android:textSize="@dimen/dimen_12sp"
+                    android:alpha="0.8"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_headline_channel"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

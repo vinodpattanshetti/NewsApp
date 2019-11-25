@@ -9,6 +9,10 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
+/**
+ * The class 'NewsApplication' responsible for initializing the Dagger 2,
+ * Retrofit and other libraries before calling NewsActivity page.
+ */
 class NewsApplication : Application(), HasActivityInjector {
 
   @Inject lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>

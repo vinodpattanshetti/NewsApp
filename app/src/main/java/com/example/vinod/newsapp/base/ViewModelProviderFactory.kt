@@ -6,9 +6,9 @@ import com.example.vinod.newsapp.base.scope.ApplicationScope
 import javax.inject.Inject
 import javax.inject.Provider
 
-@ApplicationScope
-@Suppress("UNCHECKED_CAST")
-class ViewModelProviderFactory @Inject constructor(private val mapOfViewModels: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {
+@ApplicationScope @Suppress("UNCHECKED_CAST") class ViewModelProviderFactory @Inject constructor(
+  private val mapOfViewModels: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+) : ViewModelProvider.Factory {
 
   override fun <T : ViewModel> create(modelClass: Class<T>): T {
     val creator = mapOfViewModels[modelClass]

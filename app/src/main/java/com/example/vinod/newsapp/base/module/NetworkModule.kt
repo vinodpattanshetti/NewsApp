@@ -20,12 +20,18 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-@Module
-class NetworkModule {
+/*
+*  This Module class 'NetworkModule' provides object of
+*  Retrofit, Cache, OkHttpClient.Builder, Retrofit.Builder, Gson,
+*  ApplicationContext and NewsApiService objects to
+*  ApplicationComponent.kt for dependency injection
+* */
 
-  @Provides
-  @ApplicationScope
-  fun provideRetrofit(retrofitBuilder: Retrofit.Builder, okHttpClientBuilder: OkHttpClient.Builder): Retrofit {
+@Module class NetworkModule {
+
+  @Provides @ApplicationScope fun provideRetrofit(
+    retrofitBuilder: Retrofit.Builder, okHttpClientBuilder: OkHttpClient.Builder
+  ): Retrofit {
     retrofitBuilder.apply {
       baseUrl("https://newsapi.org/v2/")
       client(okHttpClientBuilder.build())
@@ -33,15 +39,11 @@ class NetworkModule {
     return retrofitBuilder.build()
   }
 
-  @Provides
-  @ApplicationScope
-  fun provideCache(context: Context): Cache {
+  @Provides @ApplicationScope fun provideCache(context: Context): Cache {
     return Cache(context.cacheDir, NETWORK_CACHE_SIZE)
   }
 
-  @Provides
-  @ApplicationScope
-  fun provideOkHttpClientBuilder(cache: Cache): OkHttpClient.Builder {
+  @Provides @ApplicationScope fun provideOkHttpClientBuilder(cache: Cache): OkHttpClient.Builder {
     return OkHttpClient.Builder().apply {
       readTimeout(NETWORK_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
       connectTimeout(NETWORK_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
@@ -50,30 +52,21 @@ class NetworkModule {
     }
   }
 
-  @Provides
-  @ApplicationScope
+  @Provides @ApplicationScope
   fun provideRetrofitBuilder(converterFactory: Converter.Factory): Retrofit.Builder {
-    return Retrofit.Builder()
-      .addConverterFactory(converterFactory)
+    return Retrofit.Builder().addConverterFactory(converterFactory)
       .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
   }
 
-  @Provides
-  @ApplicationScope
-  fun provideGson(): Gson = GsonBuilder().create()
+  @Provides @ApplicationScope fun provideGson(): Gson = GsonBuilder().create()
 
-  @Provides
-  @ApplicationScope
-  fun provideConverter(gson: Gson): Converter.Factory = GsonConverterFactory.create(gson)
+  @Provides @ApplicationScope fun provideConverter(gson: Gson): Converter.Factory =
+    GsonConverterFactory.create(gson)
 
+  @Provides @ApplicationScope fun provideContext(application: Application): Context =
+    application.applicationContext
 
-  @Provides
-  @ApplicationScope
-  fun provideContext(application: Application): Context = application.applicationContext
-
-  @Provides
-  @ApplicationScope
-  fun provideService(retrofit: Retrofit) : NewsApiService {
+  @Provides @ApplicationScope fun provideService(retrofit: Retrofit): NewsApiService {
     return retrofit.create(NewsApiService::class.java)
   }
 

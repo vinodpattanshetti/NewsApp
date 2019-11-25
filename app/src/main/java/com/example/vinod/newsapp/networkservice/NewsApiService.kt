@@ -4,14 +4,12 @@ import com.example.vinod.newsapp.model.News
 import io.reactivex.Observable
 import retrofit2.http.GET
 
+/*
+* The interface 'NewsApiService' responsible for implementing Retrofit GET method.
+* For news api
+* https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-24&sortBy=publishedAt&apiKey=c96d27cfad814260a641accf02576001
+* */
 interface NewsApiService {
-
-  @GET("everything?q=bitcoin&from=2019-10-23&sortBy=publishedAt&apiKey=3150cd7e7ff54633b59d4b383c354b51")
+  @GET("everything?q=bitcoin&from=2019-11-24&sortBy=publishedAt&apiKey=c96d27cfad814260a641accf02576001")
   fun getNewsData(): Observable<News>
-  /*@GET("current.json?key=99b51b0859294877a8732802191302&q=bangalore")
-  fun getCurrent(): Observable<CurrentResponse>
-
-  @GET("forecast.json?key=99b51b0859294877a8732802191302&q=bangalore&days=5")
-  fun getForecast(): Observable<ForecastResponse>*/
-
 }

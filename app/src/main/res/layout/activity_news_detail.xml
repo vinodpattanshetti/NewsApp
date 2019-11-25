@@ -14,17 +14,100 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:scaleY="1.2"
             android:scaleX="1.1"
-            tools:src="@drawable/ic_launcher_background" />
+            android:scaleY="1.2"
+            tools:src="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_24dp"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:background="@drawable/arrow_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_headline_channel"
+            style="@style/TextViewRobotoSlabRegularStyle"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_24dp"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:layout_marginTop="@dimen/dimen_64dp"
+            android:layout_marginBottom="@dimen/dimen_16dp"
+            android:textColor="@color/color_f2f2f2"
+            android:textSize="@dimen/dimen_20sp"
+            android:maxLines="2"
+            android:gravity="start"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintBottom_toTopOf="@+id/tv_news_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_headline_news"
+            app:layout_constraintVertical_bias="1.0"
+            android:ellipsize="end"
+            tools:text="Nationalsecurity.com" />
+
+        <TextView
+            android:id="@+id/tv_news_date"
+            style="@style/TextViewRobotoSlabRegularStyle"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:layout_marginLeft="@dimen/dimen_8dp"
+            android:layout_marginTop="@dimen/dimen_64dp"
+            android:layout_marginEnd="@dimen/dimen_24dp"
+            android:layout_marginRight="@dimen/dimen_24dp"
+            android:layout_marginBottom="@dimen/dimen_16dp"
+            android:textColor="@color/color_f2f2f2"
+            android:textSize="@dimen/dimen_20sp"
+            android:maxLines="1"
+            android:gravity="end"
+            app:layout_constraintBottom_toTopOf="@+id/tv_news_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vertical_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_headline_news"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="2019-11-23" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/vertical_guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65"/>
+
+        <TextView
+            android:id="@+id/tv_news_description"
+            style="@style/TextViewRobotoSlabRegularStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_24dp"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:layout_marginEnd="@dimen/dimen_24dp"
+            android:layout_marginRight="@dimen/dimen_24dp"
+            android:layout_marginBottom="@dimen/dimen_24dp"
+            android:textColor="@color/color_bababa"
+            android:textSize="@dimen/dimen_14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Category: computer security Fascinated by cryptocurrencies? Wishing you’d got in on the ground floor for the Bitcoin boom of 2017? Many people would answer “Yes” to both those questions – and with good reason. After all, the dramatic roller coaster ride that …" />
 
         <TextView
             android:id="@+id/tv_headline_news"
             style="@style/TextViewRobotoSlabBoldStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_16dp"
-            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:layout_marginStart="@dimen/dimen_24dp"
+            android:layout_marginLeft="@dimen/dimen_24dp"
+            android:layout_marginEnd="@dimen/dimen_24dp"
+            android:layout_marginRight="@dimen/dimen_24dp"
             android:ellipsize="end"
             android:maxLines="4"
             android:textColor="@color/color_f2f2f2"
@@ -33,71 +116,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline"
             tools:text="Why cryptocoin scams work, and how to avoid them – Naked Security" />
-
-        <TextView
-            android:id="@+id/tv_headline_channel"
-            style="@style/TextViewRobotoSlabRegularStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_16dp"
-            android:layout_marginTop="@dimen/dimen_64dp"
-            android:layout_marginBottom="@dimen/dimen_16dp"
-            android:textColor="@color/color_f2f2f2"
-            android:textSize="@dimen/dimen_12sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_news_description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_headline_news"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="Nationalcybersecurity.com"
-            android:layout_marginLeft="@dimen/dimen_16dp" />
-
-        <TextView
-            android:id="@+id/tv_news_date"
-            style="@style/TextViewRobotoSlabRegularStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_16dp"
-            android:layout_marginEnd="@dimen/dimen_16dp"
-            android:textColor="@color/color_f2f2f2"
-            android:textSize="@dimen/dimen_12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_headline_channel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/tv_headline_channel"
-            app:layout_constraintTop_toTopOf="@+id/tv_headline_channel"
-            tools:text="2019-11-23" />
-
-        <TextView
-            android:id="@+id/tv_news_description"
-            style="@style/TextViewRobotoSlabRegularStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_16dp"
-            android:layout_marginEnd="@dimen/dimen_16dp"
-            android:layout_marginBottom="@dimen/dimen_24dp"
-            android:textColor="@color/color_bababa"
-            android:textSize="@dimen/dimen_14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="Category: computer security Fascinated by cryptocurrencies? Wishing you’d got in on the ground floor for the Bitcoin boom of 2017? Many people would answer “Yes” to both those questions – and with good reason. After all, the dramatic roller coaster ride that …" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/transparent"
-            android:elevation="4dp"
-            android:theme="@style/MyToolbar"
-            app:contentInsetStartWithNavigation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/arrow_left"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:subtitleTextColor="@color/color_white"
-            app:titleTextColor="@color/color_white" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

@@ -6,12 +6,14 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.vinod.newsapp.base.NewsApplication
+import com.example.vinod.newsapp.base.utils.OpenForTesting
 import com.example.vinod.newsapp.base.utils.schedulers.BaseSchedulerProvider
 import com.example.vinod.newsapp.model.News
 import com.example.vinod.newsapp.repository.NewsRepository
 import javax.inject.Inject
 
-class NewsViewModel @Inject constructor(
+@OpenForTesting
+open class NewsViewModel @Inject constructor(
   private val newsRepository: NewsRepository, private val scheduler: BaseSchedulerProvider
 ) : ViewModel() {
 

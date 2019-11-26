@@ -27,21 +27,26 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+import android.os.Handler
+import android.widget.Toast
 
 /**
  * This class 'NewsActivity' is responsible for displaying News Data Articles on xml layout 'activity_news' from Api
  * https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-24&sortBy=publishedAt&apiKey=c96d27cfad814260a641accf02576001
  * or News Room database
  */
-class NewsActivity : AppCompatActivity(), NewsListingAdapter.IActivityCommunicator {
+@OpenForTesting open class NewsActivity : AppCompatActivity(),
+  NewsListingAdapter.IActivityCommunicator {
 
   private var mBinder: ActivityNewsBinding? = null
   @Inject lateinit var mViewModel: ViewModelProvider.Factory
-  private lateinit var mWeatherViewModel: NewsViewModel
+  lateinit var mNewsViewModel: NewsViewModel
 
   private var mNews: News? = null
   private var mNewsDatabase: NewsDatabase? = null
   private var mSubscriptions: CompositeDisposable = CompositeDisposable()
+
+  private var mExitApp = false
 
   companion object {
     const val ARTICLE_DATA = "ARTICLE_DATA"
@@ -62,7 +67,7 @@ class NewsActivity : AppCompatActivity(), NewsListingAdapter.IActivityCommunicat
     mNewsDatabase =
       Room.databaseBuilder(this, NewsDatabase::class.java, NAME).fallbackToDestructiveMigration()
         .build()
-    mWeatherViewModel = ViewModelProviders.of(this, mViewModel).get(NewsViewModel::class.java)
+    mNewsViewModel = ViewModelProviders.of(this, mViewModel).get(NewsViewModel::class.java)
   }
 
   /**
@@ -76,8 +81,8 @@ class NewsActivity : AppCompatActivity(), NewsListingAdapter.IActivityCommunicat
       mNews = null
       mNews = it
       if (null == mNews) {
-        mWeatherViewModel.initNewsApiCall()
-        mWeatherViewModel.mNewsDateResponse.observe(this, Observer { news ->
+        mNewsViewModel.initNewsApiCall()
+        mNewsViewModel.mNewsDateResponse.observe(this, Observer { news ->
           mNews = news
           if (!mNews?.isError.orFalse()) {
             initNewsListAdapter()
@@ -146,5 +151,20 @@ class NewsActivity : AppCompatActivity(), NewsListingAdapter.IActivityCommunicat
    */
   private fun getNewsArticleData(): LiveData<News>? {
     return mNewsDatabase?.getINewsDao()?.fetchAllNewsArticles()
+  }
+
+  override fun onBackPressed() {
+    if (mExitApp) {
+      finish()
+    } else {
+      Toast.makeText(
+        this, getString(R.string.txt_exit_app), Toast.LENGTH_SHORT
+      ).show()
+      mExitApp = true
+      Handler().postDelayed({
+        mExitApp = false
+      }, 3000)
+
+    }
   }
 }

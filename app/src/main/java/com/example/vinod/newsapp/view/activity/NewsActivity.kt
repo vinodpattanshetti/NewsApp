@@ -11,12 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.vinod.newsapp.R
-import com.example.vinod.newsapp.base.utils.SpacesItemDecoration
-import com.example.vinod.newsapp.base.utils.convertDpToPx
-import com.example.vinod.newsapp.base.utils.hideView
-import com.example.vinod.newsapp.base.utils.showView
+import com.example.vinod.newsapp.base.utils.*
 import com.example.vinod.newsapp.database.NewsDatabase
 import com.example.vinod.newsapp.databinding.ActivityNewsBinding
 import com.example.vinod.newsapp.model.Article
@@ -81,28 +79,46 @@ class NewsActivity : AppCompatActivity(), NewsListingAdapter.IActivityCommunicat
         mWeatherViewModel.initNewsApiCall()
         mWeatherViewModel.mNewsDateResponse.observe(this, Observer { news ->
           mNews = news
-          insertNewsArticlesToDatabase(mNews)
+          if (!mNews?.isError.orFalse()) {
+            initNewsListAdapter()
+            insertNewsArticlesToDatabase(mNews)
+          } else {
+            mBinder?.pbProgress?.hideView()
+            showAlertDialog(this@NewsActivity)
+          }
         })
+      } else {
+        initNewsListAdapter()
       }
-      initNewsListAdapter()
     })
   }
 
   // Initializing News list adapter which displays the Article lists
   private fun initNewsListAdapter() {
-    mBinder?.pbProgress?.hideView()
-    mBinder?.rvNewsList?.run {
-      layoutManager = LinearLayoutManager(this@NewsActivity)
-      addItemDecoration(
-        SpacesItemDecoration(
-          convertDpToPx(this@NewsActivity, VALUE_SIXTEEN).toInt(),
-          convertDpToPx(this@NewsActivity, VALUE_TWENTY_FOUR).toInt()
+    if (isApiCallSuccessful()) {
+      mBinder?.rvNewsList?.run {
+        layoutManager = LinearLayoutManager(this@NewsActivity) as RecyclerView.LayoutManager?
+        addItemDecoration(
+          SpacesItemDecoration(
+            convertDpToPx(this@NewsActivity, VALUE_SIXTEEN).toInt(),
+            convertDpToPx(this@NewsActivity, VALUE_TWENTY_FOUR).toInt()
+          )
         )
-      )
-      itemAnimator = DefaultItemAnimator()
-      val newsAdapter = NewsListingAdapter(mNews, this@NewsActivity)
-      adapter = newsAdapter
+        itemAnimator = DefaultItemAnimator()
+        val newsAdapter = NewsListingAdapter(mNews, this@NewsActivity)
+        adapter = newsAdapter
+      }
+    } else {
+      showAlertDialog(this@NewsActivity)
     }
+    mBinder?.pbProgress?.hideView()
+  }
+
+  private fun isApiCallSuccessful(): Boolean {
+    if (mNews?.status == "ok") {
+      return true
+    }
+    return false
   }
 
   // Overridden method to call onItemSelected of News list page to call News Detail activity page

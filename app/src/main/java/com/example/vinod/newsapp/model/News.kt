@@ -11,6 +11,7 @@ import io.reactivex.annotations.NonNull
   @SerializedName("status") @Expose var status: String? = null, @SerializedName("totalResults")
   @Expose var totalResults: Int? = null, @SerializedName("articles") @Expose
   var articles: ArrayList<Article>? = null, @SerializedName("code") @Expose
-  var code: String? = null, @SerializedName("message") @Expose var message: String? = null
+  var code: String? = null, @SerializedName("message") @Expose var message: String? = null,
+  var isError: Boolean? = false
 
 )

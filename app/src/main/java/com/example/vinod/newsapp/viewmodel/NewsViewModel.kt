@@ -1,8 +1,11 @@
 package com.example.vinod.newsapp.viewmodel
 
 import android.annotation.SuppressLint
+import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.vinod.newsapp.base.NewsApplication
 import com.example.vinod.newsapp.base.utils.schedulers.BaseSchedulerProvider
 import com.example.vinod.newsapp.model.News
 import com.example.vinod.newsapp.repository.NewsRepository
@@ -16,18 +19,18 @@ class NewsViewModel @Inject constructor(
 
   @SuppressLint("CheckResult") fun initNewsApiCall() {
     newsRepository.callNewsApi().subscribeOn(scheduler.io()).observeOn(scheduler.ui())
-      .doOnError { error ->
-        getNewsErrorResponse(error)
+      .doOnError { _ ->
+        getNewsErrorResponse()
       }.subscribe({ getNewsResponse(it) }, {})
   }
 
-  private fun getNewsErrorResponse(error: Throwable) {
-
+  private fun getNewsErrorResponse() {
+    val mNews = News()
+    mNews.isError = true
+    mNewsDateResponse.value = mNews
   }
 
   private fun getNewsResponse(news: News) {
     mNewsDateResponse.value = news
   }
-
-
 }

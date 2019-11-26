@@ -13,7 +13,7 @@ import com.example.vinod.newsapp.model.News
 * Once we get data from above api we are storing it to the Room database.
 * */
 
-@Database(entities = [News::class], version = 2, exportSchema = false)
+@Database(entities = [News::class], version = 3, exportSchema = false)
 @TypeConverters(DataConverter::class) abstract class NewsDatabase : RoomDatabase() {
   abstract fun getINewsDao(): NewsDao
 }

@@ -1,5 +1,5 @@
 # NewsApp
-Project - Byju’s News Application
+Project - News Application
 
 This News Application has two Activity pages (NewsActivity) which is displaying list of News articles
 With the help network api(https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-24&sortBy=publishedAt&apiKey=c96d27cfad814260a641accf02576001

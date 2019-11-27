@@ -47,6 +47,7 @@ import android.widget.Toast
   private var mSubscriptions: CompositeDisposable = CompositeDisposable()
 
   private var mExitApp = false
+  private var isItemDecoratorAdded = true
 
   companion object {
     const val ARTICLE_DATA = "ARTICLE_DATA"
@@ -103,12 +104,15 @@ import android.widget.Toast
     if (isApiCallSuccessful()) {
       mBinder?.rvNewsList?.run {
         layoutManager = LinearLayoutManager(this@NewsActivity) as RecyclerView.LayoutManager?
-        addItemDecoration(
-          SpacesItemDecoration(
-            convertDpToPx(this@NewsActivity, VALUE_SIXTEEN).toInt(),
-            convertDpToPx(this@NewsActivity, VALUE_TWENTY_FOUR).toInt()
+        if(isItemDecoratorAdded) {
+          addItemDecoration(
+            SpacesItemDecoration(
+              convertDpToPx(this@NewsActivity, VALUE_SIXTEEN).toInt(),
+              convertDpToPx(this@NewsActivity, VALUE_TWENTY_FOUR).toInt()
+            )
           )
-        )
+          isItemDecoratorAdded = false
+        }
         itemAnimator = DefaultItemAnimator()
         val newsAdapter = NewsListingAdapter(mNews, this@NewsActivity)
         adapter = newsAdapter

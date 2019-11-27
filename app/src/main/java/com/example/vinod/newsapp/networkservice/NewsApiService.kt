@@ -10,6 +10,6 @@ import retrofit2.http.GET
 * https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-24&sortBy=publishedAt&apiKey=c96d27cfad814260a641accf02576001
 * */
 interface NewsApiService {
-  @GET("everything?q=bitcoin&from=2019-11-25&sortBy=publishedAt&apiKey=c96d27cfad814260a641accf02576001")
+  @GET("everything?q=bitcoin&from=2019-11-27&sortBy=publishedAt&apiKey=c96d27cfad814260a641accf02576001")
   fun getNewsData(): Observable<News>
 }

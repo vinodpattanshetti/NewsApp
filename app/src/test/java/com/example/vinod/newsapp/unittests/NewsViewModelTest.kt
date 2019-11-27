@@ -66,4 +66,30 @@ import org.mockito.junit.MockitoJUnitRunner
       viewModel.mNewsDateResponse.value?.articles?.size
     )
   }
+
+  /**
+   * Function 'testToCheckFirstArticleTitle' to check is News Article title using dummy data provided
+   * by method getNewsSampleDataModel()
+   */
+  @Test fun testToCheckFirstArticleTitle() {
+    Mockito.`when`(repository.callNewsApi()).thenReturn(Observable.just(getNewsSampleDataModel()))
+    viewModel.initNewsApiCall()
+    Assert.assertEquals(
+      getNewsSampleDataModel().articles?.get(0)?.title,
+      viewModel.mNewsDateResponse.value?.articles?.get(0)?.title
+    )
+  }
+
+  /**
+   * Function 'testToCheckFirstArticleDescription' to check is News Article description using dummy data provided
+   * by method getNewsSampleDataModel()
+   */
+  @Test fun testToCheckFirstArticleDescription() {
+    Mockito.`when`(repository.callNewsApi()).thenReturn(Observable.just(getNewsSampleDataModel()))
+    viewModel.initNewsApiCall()
+    Assert.assertEquals(
+      getNewsSampleDataModel().articles?.get(0)?.description,
+      viewModel.mNewsDateResponse.value?.articles?.get(0)?.description
+    )
+  }
 }
